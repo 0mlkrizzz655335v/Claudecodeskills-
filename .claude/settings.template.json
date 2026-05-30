@@ -1,0 +1,67 @@
+{
+  "thinking": "high",
+  "env": {
+    "CLAUDE_AUTOCOMPACT_PCT_OVERRIDE": "50"
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"{PLUGIN_ROOT}/scripts/session-start.js\""
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"{PLUGIN_ROOT}/scripts/learn-capture.js\""
+          },
+          {
+            "type": "command",
+            "command": "node \"{PLUGIN_ROOT}/scripts/session-check.js\""
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"{PLUGIN_ROOT}/scripts/pre-compact.js\""
+          }
+        ]
+      }
+    ],
+    "PostCompact": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"{PLUGIN_ROOT}/scripts/post-compact.js\""
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"{PLUGIN_ROOT}/scripts/session-end.js\""
+          }
+        ]
+      }
+    ]
+  }
+}
