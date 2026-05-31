@@ -26,7 +26,7 @@
 - `self-improving/archive/` — 归档的旧记忆
 - `~/.claude/LEARNED.md` — Pro Workflow 学习日志（learn-rule / replay-learnings）
 - `~/.openclaw/workspace/MEMORY.md` — 跨工具共享记忆（含"最近对话"时间线）
-- `CLAUDE.md` — 入口（本文件）
+- `C:\Users\xnsrz\CLAUDE.md` — 入口（本文件）
 
 ### 会话流程
 1. **会话开始时**：读取本文件 → 读取 `~/.openclaw/workspace/MEMORY.md`（含最近对话时间线）→ 读取 `self-improving/memory.md` → 读取 `self-improving/corrections.md`
@@ -40,7 +40,7 @@
 - stealth_browser（4层反反爬：L1 nodriver → L2 指纹轮换 → L3 rebrowser → L4 CloakBrowser）
 
 ## 插件
-- Pro Workflow（记忆/学习/hooks）| Superpowers v5.1（TDD/调试/子代理/14 skills）
+- Pro Workflow（记忆/学习/hooks）| Superpowers v5.1（TDD/调试/子代理/14 skills）| CodeGraph（代码知识图谱）
 
 ## 环境
 - Windows | PowerShell | `bypassPermissions`
