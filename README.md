@@ -1,90 +1,68 @@
-# Claude Code 长期记忆系统
+# Claude Code 工程环境
 
-> 让 Claude Code 拥有跨会话的持久记忆，不再每次"失忆"。
+> 4层记忆 + 6层反反爬 + 5个插件 + 自动化 — 开箱即用
 
-## 三层架构
+---
 
-`
-L1 内置    Claude Code Auto Memory   自动记录代码规范/构建命令/偏好
-L2 插件    Pro Workflow hooks        [LEARN]自动捕获 + 会话交接 + 上下文恢复
-L3 共享    MEMORY.md 跨工具时间线    跨 Claude Code / {跨工具平台} 的对话连续性
-`
+## 插件 (5个)
 
-## 快速安装
+| 插件 | Stars | 核心 |
+|------|-------|------|
+| Pro Workflow 3.3 | — | 记忆/学习/hooks/上下文工程 |
+| Superpowers 5.1 | 213K | TDD/调试/子代理/14 skills |
+| Matt Pocock Skills | 112K | 24个工程师技能 |
+| Academic Research 3.9 | 24K | 论文/审稿/深度研究 |
+| agentmemory 0.9 | — | MCP+BM25+向量搜索 |
 
-### 1. 安装 Pro Workflow 插件
-`ash
-claude plugins install rohitg00/pro-workflow
-`
+## 工具
 
-### 2. 复制本仓库文件
-`ash
-git clone https://github.com/{user}/claude-memory-system.git
-cp CLAUDE.md ~/CLAUDE.md
-cp MEMORY.md {SHARED_MEMORY_PATH}/MEMORY.md
-cp -r self-improving/ ~/self-improving/
-cp -r .claude/ ~/.claude/          # LEARNED.md + rules + memory/
-cp NOTES.md ~/NOTES.md
-`
-
-### 3. 配置 hooks（核心自动化）
-将 .claude/settings.template.json 中的 hooks 段合并到你的 ~/.claude.json：
-`json
-{
-  "thinking": "high",
-  "env": { "CLAUDE_AUTOCOMPACT_PCT_OVERRIDE": "50" },
-  "hooks": { ... }
-}
-`
-
-### 4. 编译 Pro Workflow dist
-`ash
-cd ~/.claude/plugins/marketplaces/pro-workflow
-npm install --ignore-scripts
-npx tsc
-`
-
-### 5. 应用 learn-capture 补丁
-`ash
-cp patch/learn-capture.js ~/.claude/plugins/marketplaces/pro-workflow/scripts/
-`
-此补丁让 learn-capture.js 在 better-sqlite3 不可用时回退到直接写 LEARNED.md。
-
-## 文件说明
-
-| 文件 | 作用 |
+| 工具 | 用途 |
 |------|------|
-| CLAUDE.md | 入口，定义记忆系统结构+规则+[LEARN]标签 |
-| MEMORY.md | 跨工具共享记忆，含速查层+最近对话时间线 |
-| self-improving/memory.md | 热记忆：用户偏好、模式、规则 |
-| self-improving/corrections.md | 纠错索引（详情在 LEARNED.md） |
-| self-improving/heartbeat-state.md | 记忆健康心跳 |
-| self-improving/session-handoff/ | 跨会话交接文档 |
-| self-improving/archive/ | 归档的旧时间线条目 |
-| .claude/LEARNED.md | [LEARN] 格式的学习规则（replay-learnings 可检索） |
-| .claude/rules/ | Pro Workflow .mdc 规则文件（双保险） |
-| NOTES.md | compact 前保存工作状态 |
+| stealth_browser v2 | 6层反反爬 (nodriver→browserforge→rebrowser→CloakBrowser→curl-cffi→fake-ua) |
+| CodeGraph | 代码知识图谱 |
+| CloakBrowser | C++级反检测浏览器 |
 
-## 自动化能力
+## 四层记忆
 
-| Hook | 触发时机 | 功能 |
-|------|----------|------|
-| SessionStart | 会话启动 | 加载 [LEARN] 模式 + 显示上次会话摘要 |
-| Stop | 每次回复后 | 自动扫描 [LEARN] 并存入 LEARNED.md |
-| PreCompact | compact 前 | 保存上下文状态 |
-| PostCompact | compact 后 | 恢复关键上下文 |
-| SessionEnd | 会话结束 | 提示记录学习 |
+`
+L1 内置     Auto Memory                        自动
+L2 hooks    Pro Workflow (5事件/6脚本)          [LEARN]自动捕获
+L3 共享     MEMORY.md                          跨工具时间线+速查
+L4 智能     agentmemory (1862条观测)            BM25+向量+图谱+MCP
+`
 
-## 特性
+## 自动化
 
-- **防失忆**：3 层记忆，跨会话/跨工具
-- **可检索**：replay-learnings 通过 [LEARN] 标签检索 9+ 条规则
-- **抗膨胀**：心跳精简、最近对话归档（保留 5 条）
-- **秒级冷启动**：MEMORY.md 速查 5 行进入状态（~200 bytes）
-- **自动闭环**：learn-capture 文件回退，无需 better-sqlite3
+| Hook | 何时 | 做什么 |
+|------|------|--------|
+| SessionStart | 启动 | 加载[LEARN] + 上次会话摘要 |
+| Stop | 每次回复 | learn-capture自动扫描[LEARN] |
+| PreCompact | compact前 | 保存上下文 |
+| PostCompact | compact后 | 恢复上下文 |
+| SessionEnd | 结束 | 提示记录学习 |
 
-## 维护
+## 目录树
 
-- 每 5 次会话检查 heartbeat-state.md
-- 重要会话结束执行 wrap-up → session-handoff → 更新 MEMORY.md
-- 最近对话超过 5 条时手动归档到 archive/
+`
+├── CLAUDE.md           # 入口+规则+插件注册+agentmemory桥接
+├── MEMORY.md           # 速查+最近对话
+├── NOTES.md            # 工作状态暂存
+├── CHANGELOG.md        # 更新日志
+├── tools/              # stealth_browser.py v2
+├── .claude/            # LEARNED.md/rules/settings模板
+├── self-improving/     # memory/corrections/heartbeat/session-handoff/archive
+├── patch/              # learn-capture.js 补丁
+├── openclaw/           # OpenClaw工具集成
+└── docs/               # 文档
+`
+
+## 维护规则
+
+1. 学到偏好→memory.md | 被纠正→LEARNED.md[LEARN]
+2. 最近对话保留5条,超量→archive
+3. 记忆系统改进 → 自动 git push
+4. 每5会话检查 heartbeat-state
+
+---
+
+[CHANGELOG](./CHANGELOG.md)
