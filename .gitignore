@@ -9,3 +9,6 @@ CLAUDE.md.user
 # OS
 Thumbs.db
 .DS_Store
+
+# agentmemory 数据 (含密钥)
+data/
