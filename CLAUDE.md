@@ -2,7 +2,7 @@
 
 ## 跨工具共享记忆
 
-@{SHARED_MEMORY_PATH}/MEMORY.md
+@~/.openclaw/workspace/MEMORY.md
 
 当你需要了解用户偏好、项目上下文、历史决策时，先读取上述文件。
 如果该文件存在但内容为空，正常继续。
@@ -19,22 +19,28 @@
 - `self-improving/memory.md` — 热记忆（偏好、模式、规则）→ **每次会话必读**
 - `self-improving/corrections.md` — 纠错索引（详情见 `~/.claude/LEARNED.md`）
 - `self-improving/heartbeat-state.md` — 心跳状态（自动维护）
+- `self-improving/heartbeat-rules.md` — 心跳规则（检查间隔/阈值/告警）
 - `self-improving/session-handoff/` — 跨会话交接文档（Pro Workflow 生成）
 - `self-improving/projects/` — 各项目专属记忆
 - `self-improving/domains/` — 领域知识
 - `self-improving/archive/` — 归档的旧记忆
 - `~/.claude/LEARNED.md` — Pro Workflow 学习日志（learn-rule / replay-learnings）
-- `{SHARED_MEMORY_PATH}/MEMORY.md` — 跨工具共享记忆（含"最近对话"时间线）
+- `~/.openclaw/workspace/MEMORY.md` — 跨工具共享记忆（含"最近对话"时间线）
 - `CLAUDE.md` — 入口（本文件）
 
 ### 会话流程
-1. **会话开始时**：读取本文件 → 读取 `{SHARED_MEMORY_PATH}/MEMORY.md`（含最近对话时间线）→ 读取 `self-improving/memory.md` → 读取 `self-improving/corrections.md`
+1. **会话开始时**：读取本文件 → 读取 `~/.openclaw/workspace/MEMORY.md`（含最近对话时间线）→ 读取 `self-improving/memory.md` → 读取 `self-improving/corrections.md`
 2. **会话中**：如果用户纠正我的错误 → 自动追加到 `~/.claude/LEARNED.md`（`corrections.md` 只更新索引条目）
 3. **会话中**：如果用户表达了偏好/规则 → 自动更新 `memory.md`
 4. **会话结束时**：用户可以用 `/memory` 命令保存重要上下文；重要会话执行 wrap-up → 生成 session-handoff → 更新 MEMORY.md"最近对话"
 
 ## 工具
 - MIMO Vision（图片/视频理解）| Python 脚本：gen_img / gen_vid / mimo / multimedia
+- CloakBrowser（反检测浏览器，过 Cloudflare/reCAPTCHA）| `cloakbrowser_tool.py`
+- stealth_browser（4层反反爬：L1 nodriver → L2 指纹轮换 → L3 rebrowser → L4 CloakBrowser）
+
+## 插件
+- Pro Workflow（记忆/学习/hooks）| Superpowers v5.1（TDD/调试/子代理/14 skills）
 
 ## 环境
 - Windows | PowerShell | `bypassPermissions`
@@ -57,7 +63,7 @@
 7. 重要会话结束：执行 wrap-up → 生成 session-handoff → 更新 MEMORY.md 速查+最近对话
 8. 高效输出：不谄媚（无"Sure!/Great!"），不啰嗦（无"Let me know if..."），不复述问题，代码优先解释在后
 9. 结构化优先：表格/列表 > 段落散文，ASCII字符 > Unicode装饰符
-10. 记忆系统优化后 → 同步推送到 Git: `{GIT_REPO_URL}`
+10. 记忆系统优化后 → 同步推送到 Git: `https://github.com/0mlkrizzz655335v/Claudecodeskills-`
 
 > 自动发布: 每次对记忆系统/memory/skills 的改进，自动 commit + push 到上述仓库。
 
@@ -66,3 +72,13 @@
 [LEARN] Configuration: 用户偏好优先用全局持久化而非每会话命令
 [LEARN] Memory: 纠错统一入口 LEARNED.md，corrections.md 仅做索引
 [LEARN] Memory: 文件格式决定工具能否检索 — 必须用 [LEARN] 标签
+
+---
+
+## agentmemory 桥接区
+<!-- 此区域由 agentmemory CLAUDE_MEMORY_BRIDGE 自动维护，勿手动编辑 -->
+<!-- LINE_BUDGET=80，超出后 agentmemory 自动裁剪最旧内容 -->
+
+<!-- AGENTMEMORY_BRIDGE_START -->
+
+<!-- AGENTMEMORY_BRIDGE_END -->
