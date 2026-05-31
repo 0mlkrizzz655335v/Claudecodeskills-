@@ -1,0 +1,153 @@
+{
+  "numStartups": 15,
+  "installMethod": "global",
+  "env": {
+    "CLAUDE_AUTOCOMPACT_PCT_OVERRIDE": "50"
+  },
+  "promptQueueUseCount": 13,
+  "mcpServers": {
+    "agentmemory": {
+      "command": "npx",
+      "args": [
+        "@agentmemory/agentmemory",
+        "mcp"
+      ]
+    }
+  },
+  "thinking": "high",
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"C:\\Users\\xnsrz\\.claude\\plugins\\marketplaces\\pro-workflow\\scripts\\session-start.js\""
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"C:\\Users\\xnsrz\\.claude\\plugins\\marketplaces\\pro-workflow\\scripts\\learn-capture.js\""
+          },
+          {
+            "type": "command",
+            "command": "node \"C:\\Users\\xnsrz\\.claude\\plugins\\marketplaces\\pro-workflow\\scripts\\session-check.js\""
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"C:\\Users\\xnsrz\\.claude\\plugins\\marketplaces\\pro-workflow\\scripts\\pre-compact.js\""
+          }
+        ]
+      }
+    ],
+    "PostCompact": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"C:\\Users\\xnsrz\\.claude\\plugins\\marketplaces\\pro-workflow\\scripts\\post-compact.js\""
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"C:\\Users\\xnsrz\\.claude\\plugins\\marketplaces\\pro-workflow\\scripts\\session-end.js\""
+          }
+        ]
+      }
+    ]
+  },
+  "firstStartTime": "2026-05-12T15:37:41.055Z",
+  "opusProMigrationComplete": true,
+  "sonnet1m45MigrationComplete": true,
+  "seenNotifications": {},
+  "migrationVersion": 13,
+  "userID": "e07079385459e05c5fa251dfc4ea6b59c86b5bb2a40e095d5a76e7b8f9303880",
+  "changelogLastFetched": 1780047537661,
+  "hasCompletedOnboarding": true,
+  "lastOnboardingVersion": "2.1.156",
+  "lastReleaseNotesSeen": "2.1.158",
+  "projects": {
+    "C:/Users/xnsrz": {
+      "allowedTools": [],
+      "mcpContextUris": [],
+      "mcpServers": {},
+      "enabledMcpjsonServers": [],
+      "disabledMcpjsonServers": [],
+      "hasTrustDialogAccepted": false,
+      "projectOnboardingSeenCount": 2,
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false,
+      "exampleFiles": [],
+      "lastGracefulShutdown": false,
+      "lastVersionBase": "2.1.158",
+      "lastCost": 1.9410009999999998,
+      "lastAPIDuration": 478967,
+      "lastAPIDurationWithoutRetries": 478849,
+      "lastToolDuration": 40955,
+      "lastDuration": 669450,
+      "lastLinesAdded": 73,
+      "lastLinesRemoved": 0,
+      "lastTotalInputTokens": 64015,
+      "lastTotalOutputTokens": 28078,
+      "lastTotalCacheCreationInputTokens": 0,
+      "lastTotalCacheReadInputTokens": 1837952,
+      "lastTotalWebSearchRequests": 0,
+      "lastFpsAverage": 17.79,
+      "lastFpsLow1Pct": 219.9,
+      "lastModelUsage": {
+        "deepseek-v4-pro": {
+          "inputTokens": 64015,
+          "outputTokens": 28078,
+          "cacheReadInputTokens": 1837952,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 0,
+          "costUSD": 1.9410009999999998
+        }
+      },
+      "lastSessionId": "9b840825-d6bd-4532-878d-23c76e8e74b7",
+      "lastSessionMetrics": {
+        "frame_duration_ms_count": 11706,
+        "frame_duration_ms_min": 0.07200000000011642,
+        "frame_duration_ms_max": 55.251699999993434,
+        "frame_duration_ms_avg": 0.8253546215613855,
+        "frame_duration_ms_p50": 0.5412999999825843,
+        "frame_duration_ms_p95": 2.5254399999888837,
+        "frame_duration_ms_p99": 4.974102999975429,
+        "pre_tool_hook_duration_ms_count": 45,
+        "pre_tool_hook_duration_ms_min": 0,
+        "pre_tool_hook_duration_ms_max": 1,
+        "pre_tool_hook_duration_ms_avg": 0.06666666666666667,
+        "pre_tool_hook_duration_ms_p50": 0,
+        "pre_tool_hook_duration_ms_p95": 0.7999999999999972,
+        "pre_tool_hook_duration_ms_p99": 1
+      },
+      "hasCompletedProjectOnboarding": true
+    }
+  },
+  "opus48LaunchSeenCount": 8,
+  "officialMarketplaceAutoInstallAttempted": true,
+  "officialMarketplaceAutoInstalled": true,
+  "feedbackSurveyState": {
+    "lastShownTime": 1780154876293
+  }
+}
