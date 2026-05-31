@@ -42,6 +42,7 @@
 ## 插件
 - Pro Workflow（记忆/学习/hooks）| Superpowers v5.1（TDD/调试/子代理/14 skills）| CodeGraph（代码知识图谱）
 - Academic Research Skills v3.9（学术研究4件套：论文/审稿/管道/深度研究）
+- Matt Pocock Skills（11万⭐, 24个真实工程师技能：TDD/诊断/原型/PRD/issue管理等）
 
 ## 环境
 - Windows | PowerShell | `bypassPermissions`
