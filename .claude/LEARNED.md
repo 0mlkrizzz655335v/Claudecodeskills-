@@ -28,3 +28,11 @@ Correction: 全部改用 `[LEARN] Category: Rule` 格式，Mistake/Correction �
 [LEARN] AuditTest: 终验闭环
 Mistake: N/A
 Correction: N/A
+
+[LEARN] Verification: handoff 文档路径不可盲信，每次验证需实地探查文件系统
+Mistake: session-handoff 写 `~/.claude/marketplaces/`，实际路径是 `~/.claude/plugins/marketplaces/`
+Correction: 验证时从文件系统获取实际路径再比对，不假设 handoff 路径正确
+
+[LEARN] Deploy: 插件去重必须是标准验证项
+Mistake: pro-workflow 在 plugins/ 和 plugins/marketplaces/ 各一份，24 hook 事件可能触发 3 次（双重 plugin.json + .claude.json 手动 hooks）
+Correction: 删除 marketplace 副本，统一用 plugins/pro-workflow/；更新 .claude.json hooks 路径
