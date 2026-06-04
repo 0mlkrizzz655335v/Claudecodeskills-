@@ -56,15 +56,43 @@
 | 9 | 停用 Razer Game Manager | Manual |
 | 10 | 停用 PC Manager | Manual |
 
-## 待验证（需重启）
-1. 重启后确认 360 进程已消失
-2. 测试 nightreign（兼容模式已设）
-3. 测试其他游戏
-4. 如需玩塔可夫：单独重装 BattlEye（不影响其他游戏）
+## 第四轮诊断 (2026-06-05) — 真正的元凶：UniClash
+**用户发现：UniClash ON → 所有游戏正常；UniClash OFF → 游戏崩溃**
+
+已排除：
+- HAGS/MPO/DirectX → 无效
+- 360主动防御 → 不是根因（已全部恢复）
+- AntiCheatExpert/BattlEye/ASUS → 不是根因（已全部恢复）
+
+UniClash 线索：
+- UniClash 用 wintun.sys v0.14 + VeryKuai TAP Adapter
+- TUN 模式未开启，纯系统代理模式 (port 7993)
+- find-process-mode: always → 已改为 off
+- restoreStrategy: compatible → 已改为 aggressive
+- minimizeOnExit: false (之前 true，关闭=最小化而非真退出)
+
+已修复：
+- UniClash core config.yaml: find-process-mode = "off"
+- UniClash shared_preferences.json: find-process-mode=off, restoreStrategy=aggressive, minimizeOnExit=false
+- VeryKuai TAP Adapter (以太网 2): 已禁用
+- 系统 ProxyServer: 已清空
+- openclaw.json: 已从备份恢复 (enabled=false, proxyUrl=http://127.0.0.1:7993)
+
+## 待验证（重启后）
+1. 重启确保 UniClash 新配置加载
+2. 关 UniClash → 测游戏（TAP 已禁用，如果好了就是 TAP 驱动的问题）
+3. 开 UniClash → 测游戏（应该正常）
+4. 确认 qqbot/gateway 服务正常
+
+## 所有错误操作已恢复
+- 360 服务/启动项/计划任务：已恢复
+- ACE 内核驱动 Start 值：已恢复
+- AntiCheatExpert/BattlEye/ASUS/Razer/ROG/PC Manager 服务：全部 Automatic
+- nightreign 兼容模式：已删除
+- 深度优化塔科夫.ps1 HAGS 段：仍保留修复（不会重新开启 HAGS）
 
 ## 关键教训
-- HAGS 在此案例中不是根因（关了还崩）
-- **360安全卫士主动防御是 ntdll 0xc0000005 在 Win11 24H2 上的已知元凶**
-- 内核级安全软件 >> 显卡驱动 >> 系统文件 的排查优先级
-- 修复后必须验证事件日志确认是否还有新崩溃
-- 优化脚本可能包含与修复冲突的配置，必须审计
+1. 用户说"打开塔可夫就有问题"≠塔可夫是根因（可能是 UniClash 状态变化的时间巧合）
+2. 用户说"关掉他游戏就无法打开"=直接因果关系，优先级最高
+3. 改配置前先搞清楚是运行时配置还是核心配置（UI vs core config）
+4. 停服务前先确认是否真的是根因，别看到可疑就动手
