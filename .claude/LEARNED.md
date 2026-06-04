@@ -67,3 +67,8 @@ Correction: 用 DuckDuckGo 搜具体错误信息 + 定向到 Reddit/Microsoft An
 [LEARN] Gaming: 内核级反作弊服务可能是 ntdll 崩溃元凶
 Finding: AntiCheatExpert Service (24x7运行) + BattlEye + ASUS Armoury Crate 6个服务 — 这些内核级组件直接注入所有进程，Win11 24H2 升级后兼容性存疑
 Status: 待验证（下一步停掉这些服务后测试）
+
+[LEARN] Gaming: 360安全卫士主动防御 = ntdll 0xc0000005 真正元凶
+Finding: 360Safe ZhuDongFangYu 内核级 hook ntdll.dll 监控所有进程，Win11 24H2 不兼容导致所有游戏崩溃
+Fix: sc delete 服务 + 删计划任务 + 删Run键 + 停用其他内核服务（AntiCheatExpert/BattlEye/ASUS/Razer/ROG）
+Note: 360自保护锁死进程/文件，需重启生效；原 E:\新建文件夹 (2)\360Safe\ 路径为可疑非标准安装

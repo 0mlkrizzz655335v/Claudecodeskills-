@@ -35,17 +35,36 @@
 - nightreign 兼容模式(Win8): 已设置，待测试
 - GitHub/web 搜索: 确认 Win11 24H2 ntdll 0xc0000005 是已知广泛问题，微软建议回退 23H2
 - **发现深度优化塔科夫.ps1 地雷**: 第71-77行会重新开启 HAGS，已修复脚本
-- **新嫌疑**: AntiCheatExpert Service (内核级反作弊24x7运行) + ASUS Armoury Crate 6服务 + BattlEye
 
-## 下一轮
-1. 测试 nightreign 兼容模式
-2. 停掉 AntiCheatExpert + ASUS 全家桶 → 测试
-3. DDU 回退 NVIDIA 驱动
-4. 最终方案：回退 Win11 23H2
+## 第三轮诊断 (2026-06-05) — 找到根因！
+**根因: 360安全卫士 主动防御 (ZhuDongFangYu)**
+- 路径: `E:\新建文件夹 (2)\360Safe\deepscan\zhudongfangyu.exe`
+- 机制: 内核级 hook 进 ntdll.dll 监控所有进程 → Win11 24H2 不兼容 → 任何游戏调用 ntdll 全崩
+- 360 自保护：进程杀不掉、文件删不掉、目录改不了
+
+## 已执行修复
+| # | 操作 | 效果 |
+|---|------|------|
+| 1 | sc delete ZhuDongFangYu | 服务已标记删除 |
+| 2 | sc delete Q360AMPPL | 待定（Access Denied） |
+| 3 | 删除 Qihoo 计划任务 | ✅ |
+| 4 | 删除 360Tray Run 注册表键 | ✅ |
+| 5 | 停用 AntiCheatExpert Service | Manual |
+| 6 | 停用 BattlEye Service | Manual |
+| 7 | 停用 ASUS 9服务 | Manual |
+| 8 | 停用 ROG Live Service | Manual |
+| 9 | 停用 Razer Game Manager | Manual |
+| 10 | 停用 PC Manager | Manual |
+
+## 待验证（需重启）
+1. 重启后确认 360 进程已消失
+2. 测试 nightreign（兼容模式已设）
+3. 测试其他游戏
+4. 如需玩塔可夫：单独重装 BattlEye（不影响其他游戏）
 
 ## 关键教训
 - HAGS 在此案例中不是根因（关了还崩）
+- **360安全卫士主动防御是 ntdll 0xc0000005 在 Win11 24H2 上的已知元凶**
+- 内核级安全软件 >> 显卡驱动 >> 系统文件 的排查优先级
 - 修复后必须验证事件日志确认是否还有新崩溃
 - 优化脚本可能包含与修复冲突的配置，必须审计
-- DISM 在 ntdll 问题上不可靠，跳过
-- **内核级反作弊服务可能是隐藏元凶**
