@@ -72,3 +72,5 @@ Status: 待验证（下一步停掉这些服务后测试）
 Finding: 360Safe ZhuDongFangYu 内核级 hook ntdll.dll 监控所有进程，Win11 24H2 不兼容导致所有游戏崩溃
 Fix: sc delete 服务 + 删计划任务 + 删Run键 + 停用其他内核服务（AntiCheatExpert/BattlEye/ASUS/Razer/ROG）
 Note: 360自保护锁死进程/文件，需重启生效；原 E:\新建文件夹 (2)\360Safe\ 路径为可疑非标准安装
+
+[LEARN] Proxy: UniClash 彻底移除的教训 — 官方 unins000.exe + AppData残留 + 注册表Tracing + 环境变量HTTP_PROXY + VeryKuai TAP Adapter + Flutter缓存，共6处需清理，不能只卸载不管残留
