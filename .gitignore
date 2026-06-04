@@ -1,0 +1,12 @@
+# Ignore everything
+/*
+/*/
+
+# But track these specific files/dirs
+!/CLAUDE.md
+!/.claude/
+/.claude/*
+!/.claude/LEARNED.md
+!/self-improving/
+!/MEMORY.md
+!/.gitignore
