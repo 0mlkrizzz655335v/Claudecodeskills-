@@ -7,6 +7,17 @@
 !/.claude/
 /.claude/*
 !/.claude/LEARNED.md
+!/.claude/settings.json
+!/.claude/rules/
+!/.claude/gen_img.py
+!/.claude/gen_vid.py
+!/.claude/mimo.py
+!/.claude/multimedia.py
 !/self-improving/
 !/MEMORY.md
 !/.gitignore
+!/.openclaw/
+/.openclaw/*
+!/.openclaw/workspace/
+/.openclaw/workspace/*
+!/.openclaw/workspace/MEMORY.md

@@ -7,6 +7,10 @@ Correction: 创建 self-improving/projects/tarkov.md，重要操作当日归档
 
 ## 活跃规则
 
+[LEARN] Gaming: 不可修改游戏目录内任何文件（含 boot.config）→ 触发反作弊完整性校验
+Mistake: 2026-06-05 在 F:\EFT\EscapeFromTarkov_Data\boot.config 添加 use-persistent-threads 参数
+Correction: 立即还原 boot.config，游戏目录只放游戏文件，脚本/工具放外部目录
+
 [LEARN] Context: 装完插件≠生效，新工具安装后验证是否有产出文件
 Mistake: Pro Workflow 安装后从未产出 LEARNED.md，learn-rule/session-handoff/wrap-up 空转
 Correction: 手动创建 LEARNED.md 并用 [LEARN] 格式，确保 replay-learnings 可搜索
