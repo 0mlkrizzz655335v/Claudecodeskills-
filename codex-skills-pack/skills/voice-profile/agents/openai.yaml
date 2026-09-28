@@ -1,0 +1,13 @@
+interface:
+  display_name: 自然写作·文风
+  short_description: 从用户提供的样文提炼表达习惯，让不同文章保持一致而自然的作者声音。
+  default_prompt: 用 $voice-profile 分析我的样文，再按这个文风改写目标文章。
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: true
