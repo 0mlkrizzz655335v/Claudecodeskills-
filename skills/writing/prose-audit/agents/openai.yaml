@@ -1,0 +1,13 @@
+interface:
+  display_name: 自然写作·审稿
+  short_description: 定位文章模板感、重复结构和改写失真，提供有原句依据的审稿与修改建议。
+  default_prompt: 用 $prose-audit 审查这篇文章的 AI 味，指出优先修改处，不重写全文。
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: true
