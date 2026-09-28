@@ -1,0 +1,111 @@
+{
+  "checked_at": "2026-09-05",
+  "method": "入口规则比较、主要许可证阅读、适用场景分析；不是检测器效果排名",
+  "sources": [
+    {
+      "repository": "blader/humanizer",
+      "url": "https://github.com/blader/humanizer/blob/main/SKILL.md",
+      "path": "SKILL.md",
+      "skill_blob_sha": "c9c22422f822f07767ad1b6e79eedccbfe4e9f63",
+      "tree_sha": "e2e92e7b4b8229253ed5c8e81dc65463fdeddda5",
+      "stars": 43032,
+      "pushed_at": "2026-08-19T05:58:53Z",
+      "license_api": "MIT",
+      "license_file_read": true,
+      "decision": "通用编辑、作者声音、保真与误报约束；筛选吸收，重写中文流程。"
+    },
+    {
+      "repository": "op7418/Humanizer-zh",
+      "url": "https://github.com/op7418/Humanizer-zh/blob/main/SKILL.md",
+      "path": "SKILL.md",
+      "skill_blob_sha": "3b39d9a3729b6e5e5aaf5de4ce11d33e8af4655b",
+      "tree_sha": "91f3d394db8419c20d67ebe22a96cf8fee0a404b",
+      "stars": 16695,
+      "pushed_at": "2026-01-19T07:46:35Z",
+      "license_api": "MIT",
+      "license_file_read": true,
+      "decision": "中文分类便于入门；不沿用无依据补细节、强改三项及英文标点迁移。"
+    },
+    {
+      "repository": "hardikpandya/stop-slop",
+      "url": "https://github.com/hardikpandya/stop-slop/blob/main/SKILL.md",
+      "path": "SKILL.md",
+      "skill_blob_sha": "83f2032fde406e97492ec48ee05ebe46f6403109",
+      "tree_sha": "8da1f030185bdfe8471220585162991eaeb970e9",
+      "stars": 16822,
+      "pushed_at": "2026-03-17T18:50:39Z",
+      "license_api": "MIT",
+      "license_file_read": true,
+      "decision": "参考空话与结构检查；不沿用禁用全部副词、被动句、三项列举的硬规则。"
+    },
+    {
+      "repository": "ai-zixun/humanizer-zh",
+      "url": "https://github.com/ai-zixun/humanizer-zh/blob/main/SKILL.md",
+      "path": "SKILL.md",
+      "skill_blob_sha": "6d63916672a4c64c0cc62e709c502a37970d28d8",
+      "tree_sha": "f75f1ac9735c4f10da1bba0148e0ea7228c5c3b3",
+      "stars": 137,
+      "pushed_at": "2026-05-22T01:54:46Z",
+      "license_api": "MIT",
+      "license_file_read": true,
+      "decision": "参考中文句法和文章主线；不导入名人语料、自动文风询问和固定术语替换。"
+    },
+    {
+      "repository": "adewale/anti-slop-writing",
+      "url": "https://github.com/adewale/anti-slop-writing/blob/main/skills/anti-slop-writing/SKILL.md",
+      "path": "skills/anti-slop-writing/SKILL.md",
+      "skill_blob_sha": "7bd4d9cb25c6ec1ac37ba0dbebab77d84a65e40d",
+      "tree_sha": "53370ff70b6d1da376e053cf144d39dca8d64f9e",
+      "stars": 17,
+      "pushed_at": "2026-08-29T22:00:42Z",
+      "license_api": "MIT",
+      "license_file_read": true,
+      "decision": "参考先查逻辑关系、再改节奏以及保留有依据表达的方法。"
+    },
+    {
+      "repository": "AIScientists-Dev/academic-humanizer",
+      "url": "https://github.com/AIScientists-Dev/academic-humanizer/blob/main/SKILL.md",
+      "path": "SKILL.md",
+      "skill_blob_sha": "afb7d8da3cba41b47365730ceed40fa5a72d8097",
+      "tree_sha": "94b88b23703bed7df507acae7d6d5876209a0cdf",
+      "stars": 1401,
+      "pushed_at": "2026-07-03T07:58:33Z",
+      "license_api": "NOASSERTION",
+      "license_file_read": true,
+      "decision": "参考证据强度与专业表达保护；不移植基金申报规则或补造数据的示范。"
+    },
+    {
+      "repository": "ZeddYu/humanizer_zh",
+      "url": "https://github.com/ZeddYu/humanizer_zh/blob/main/SKILL.md",
+      "path": "SKILL.md",
+      "skill_blob_sha": "f9838d24da169169dcd973758dca092477c487b3",
+      "tree_sha": "c743bc12f72fdf3a392035df139671bb539fc77a",
+      "stars": 1,
+      "pushed_at": "2026-05-25T10:41:30Z",
+      "license_api": "MIT",
+      "license_file_read": false,
+      "decision": "比较中文场景覆盖；部分示例含原文外细节，未直接移植。"
+    },
+    {
+      "repository": "jalaalrd/anti-ai-slop-writing",
+      "url": "https://github.com/jalaalrd/anti-ai-slop-writing/blob/main/skills/anti-ai-slop-writing/SKILL.md",
+      "path": "skills/anti-ai-slop-writing/SKILL.md",
+      "skill_blob_sha": "3e7ee575681b3faac38b2260aeab7cc60a269450",
+      "tree_sha": "63255f9bbb75a265dc5786a04535cd033f487756",
+      "stars": 441,
+      "pushed_at": "2026-04-18T23:37:12Z",
+      "license_api": null,
+      "license_file_read": false,
+      "decision": "比较生成时约束；绝对禁词及标点配额较多，未直接移植。"
+    }
+  ],
+  "fusion_update": {
+    "date": "2026-09-05",
+    "installed_adaptations": [
+      "qu-ai-wei",
+      "humanizer-zh-academic",
+      "research-paper-writing"
+    ],
+    "note": "新增 qu-ai-wei、humanizer-zh-academic 与 research-paper-writing 的融合版入口，按中文深改、论文语言编辑、研究方法论分工。吸收语义账本、引用绑定和证据规划，修正排除范围扩张；排除检测配额与虚构研究过程的示例。"
+  }
+}
