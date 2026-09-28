@@ -1,0 +1,13 @@
+interface:
+  display_name: 自然写作·论文方法
+  short_description: 组织论文问题、方法、证据和章节结构，支持工程与机务维修题型及审稿检查。
+  default_prompt: 用 $research-paper-writing 根据已有材料组织论文，先明确研究问题、证据缺口和章节安排。
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: true
