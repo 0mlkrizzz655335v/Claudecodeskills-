@@ -1,0 +1,13 @@
+interface:
+  display_name: 自然写作·小说
+  short_description: 改善小说动作、对话、人物视角与章节节奏，兼顾网文推进和设定连续性。
+  default_prompt: 用 $natural-fiction 改写这一章，减少套路旁白，保留情节、设定和人物口吻。
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: true
