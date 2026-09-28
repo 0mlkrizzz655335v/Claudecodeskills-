@@ -1,0 +1,13 @@
+interface:
+  display_name: 自然写作·中文深改
+  short_description: 融合中文保真改写与长文结构重组，保护否定、引用及证据强度，减少机械表达。
+  default_prompt: 用 $qu-ai-wei 深改下面的中文，保留全部实质信息，只给成稿。
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: true
