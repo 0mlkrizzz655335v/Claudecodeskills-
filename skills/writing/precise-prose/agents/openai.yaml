@@ -1,0 +1,13 @@
+interface:
+  display_name: 自然写作·专业
+  short_description: 润色论文、技术文章和工作报告，减少空泛表达并保留数据、引用与证据边界。
+  default_prompt: 用 $precise-prose 润色下面的报告，保持正式，保留数字、引用和限制条件。
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: true
