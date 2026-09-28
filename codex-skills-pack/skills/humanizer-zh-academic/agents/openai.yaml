@@ -1,0 +1,13 @@
+interface:
+  display_name: 自然写作·论文润色
+  short_description: 针对中文论文的套话与机械句法进行保真润色，保留学术语气、数据及研究结论。
+  default_prompt: 用 $humanizer-zh-academic 润色下面的论文，不改变研究结论和引用，只给正文。
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: true
