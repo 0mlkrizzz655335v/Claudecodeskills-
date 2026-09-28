@@ -1,0 +1,13 @@
+interface:
+  display_name: 自然写作·总控
+  short_description: 从初稿到改写，减少中文套话与翻译腔，保留事实、文风和文章主线。
+  default_prompt: 用 $natural-writing 处理下面的文章，减少 AI 味，保留事实和原有立场，只给成稿。
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: true
